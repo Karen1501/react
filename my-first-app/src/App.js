@@ -6,6 +6,7 @@ import "./App.css";
 import FunctionGreet from "./components/FunctionGreet/index";
 import ClassGreet from "./components/ClassGreet/index";
 import Post from "./components/Post/index";
+import Clock from "./components/Date/index";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         >
           Learn React
         </a>
+        <Clock />
         <FunctionGreet firstName="Karen" lastName="Corona" />
         <ClassGreet firstName="Hagen" lastName="Salinas" />
       </header>
