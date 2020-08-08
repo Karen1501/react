@@ -1,32 +1,54 @@
-import React from "react";
+import React, { Component } from "react";
 import {
   Card,
-  Button,
   CardTitle,
   CardText,
-  CardColumns,
+  CardGroup,
   CardSubtitle,
   CardBody,
+  Container,
 } from "reactstrap";
 
-function Post(props) {
-  return (
-    <div>
-      <CardColumns>
-        <Card
-          body
-          inverse
-          style={{ backgroundColor: "#333", borderColor: "#333" }}
-        >
-          <CardBody>
-            <CardTitle>{props.CardTitle}</CardTitle>
-            <CardSubtitle>{props.CardSubtitle}</CardSubtitle>
-            <CardText>{props.CardText}</CardText>
-            <Button>GO</Button>
-          </CardBody>
-        </Card>
-      </CardColumns>
-    </div>
-  );
+const elements = [
+  {
+    title: "Title",
+    subtitle: "Subtitle",
+    text: "Text",
+  },
+];
+class Post extends Component {
+  render() {
+    const UIElements = elements.map(({ elements }, index) => (
+      <CardGroup key={index}></CardGroup>
+    ));
+    return (
+      <Container>
+        <CardGroup>
+          <Card>
+            <CardBody>
+              <CardTitle>{UIElements.title}</CardTitle>
+              <CardSubtitle>{UIElements.subtitle}</CardSubtitle>
+              <CardText>{UIElements.text}</CardText>
+            </CardBody>
+          </Card>
+          <Card>
+            <CardBody>
+              <CardTitle>{UIElements.title}</CardTitle>
+              <CardSubtitle>{UIElements.subtitle}</CardSubtitle>
+              <CardText>{UIElements.text}</CardText>
+            </CardBody>
+          </Card>
+          <Card>
+            <CardBody>
+              <CardTitle>{UIElements.title}</CardTitle>
+              <CardSubtitle>{UIElements.subtitle}</CardSubtitle>
+              <CardText>{UIElements.text}</CardText>
+            </CardBody>
+          </Card>
+        </CardGroup>
+      </Container>
+    );
+  }
 }
+
 export default Post;
