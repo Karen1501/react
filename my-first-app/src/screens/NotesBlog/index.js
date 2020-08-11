@@ -8,16 +8,13 @@ import {
   List,
   ListItem,
   ListItemText,
-  TextField,
 } from "@material-ui/core";
 
 // CSS
 import "./NotesBlog.css";
 
-// const notes = [
-//   { title: "My first note", content: "This is an amazing note!" },
-//   { title: "My first note", content: "This is an amazing note!" },
-// ];
+// Components
+import CustomTextField from "../../components/customTextField";
 
 class NotesBlog extends Component {
   constructor(props) {
@@ -26,37 +23,29 @@ class NotesBlog extends Component {
       notes: [],
       noteTitle: "",
       noteContent: "",
+      test: "",
+      test2: "",
     };
-    /* handleChangeTitle(event) {
-    this.setState({
-      noteTitle: event.target.value,
-    });
-  }
-  handleChangeContent(event) {
-    this.setState({
-      noteContent: event.target.value,
-    });
-  }
-*/
-
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleChangeInput = this.handleChangeInput.bind(this);
   }
 
-  /*
   componentDidMount() {
     let stringNotes = localStorage.getItem("notes");
-    if(stringNotes)
-    let parsedNotes = JSON.parse(stringNotes);
-    this.setState({
-      notes: parsedNotes,
-    });
-  }*/
+    if (stringNotes) {
+      let parsedNotes = JSON.parse(stringNotes);
+      this.setState({
+        notes: parsedNotes,
+      });
+    }
+  }
 
   handleFormSubmit(event) {
     event.preventDefault();
     const { noteTitle, noteContent, notes } = this.state;
     const newNotes = [...notes, { title: noteTitle, content: noteContent }];
+    const stringNewNotes = JSON.stringify(newNotes);
+    localStorage.setItem("notes", stringNewNotes);
     this.setState({
       notes: newNotes,
       noteTitle: "",
@@ -64,7 +53,7 @@ class NotesBlog extends Component {
     });
   }
 
-  handleChangeInput({ target: { name, value } }) {
+  handleChangeInput(name, value) {
     this.setState({
       [name]: value,
     });
@@ -82,7 +71,7 @@ class NotesBlog extends Component {
     return (
       <>
         <Container maxWidth="md">
-          <List dense={false}>{UINotes}</List>
+          <List dense={true}>{UINotes}</List>
         </Container>
         <Container maxWidth="md">
           <Grid
@@ -98,22 +87,19 @@ class NotesBlog extends Component {
                 justify="center"
                 alignItems="center"
               >
-                <TextField
-                  className="input"
+                <CustomTextField
                   value={noteTitle}
-                  onChange={this.handleChangeInput}
-                  name="noteTitle"
-                  label="Titulo"
-                  variant="outlined"
+                  name={"noteTitle"}
+                  label={"Test input"}
+                  callback={this.handleChangeInput}
                 />
-                <TextField
-                  className="input"
+                <CustomTextField
                   value={noteContent}
-                  onChange={this.handleChangeInput}
-                  name="noteContent"
-                  label="Contenido"
-                  variant="outlined"
+                  name={"noteContent"}
+                  label={"Test input"}
+                  callback={this.handleChangeInput}
                 />
+
                 <Button type="submit" variant="contained" color="primary">
                   Add
                 </Button>
