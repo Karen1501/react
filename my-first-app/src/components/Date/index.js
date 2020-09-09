@@ -9,10 +9,8 @@ class Clock extends Component {
       date: new Date().toLocaleTimeString(),
       color: "danger",
       counter: 1,
-      clicked: false,
     };
     this.handleClick = this.handleClick.bind(this); //funcion normal
-    this.state.clicked = this.clicked.bind(this);
   }
 
   componentDidMount() {
@@ -28,10 +26,9 @@ class Clock extends Component {
     console.log("Me clickeron");
     let { counter } = this.state;
     counter = counter + 1;
-    clicked = !clicked;
+
     this.setState({
       counter,
-      clicked,
     });
   }
 
