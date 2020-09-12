@@ -1,4 +1,12 @@
-.List-item {
+.list-group-item {
   background-color: coral !important;
   font-weight: bold;
+  border-radius: 10px 10px 10px 10px;
+}
+ul {
+  background: red;
+}
+li {
+  color: black;
+  background: red;
 }

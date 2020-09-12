@@ -1,3 +1,4 @@
+/*
 import React, { Component } from "react";
 import {
   Card,
@@ -53,3 +54,5 @@ function Post(props) {
 }
 
 export default Post;
+ 
+*/

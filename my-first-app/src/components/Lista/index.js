@@ -1,19 +1,30 @@
 import React, { Component } from "react";
 
-// CSS
 import "./List.css";
 import {
   Container,
-  Col,
   Row,
-  ListGroupItem,
+  Col,
   ListGroup,
+  ListGroupItem,
   Badge,
   Button,
 } from "reactstrap";
 
-const elements = [{ text: "Text 1" }, { text: "dinamic" }, { text: "Text 3" }];
-// const elements = [];
+/*
+const elements = [
+  {
+    text: "text1",
+  },
+  {
+    text: "text2",
+  },
+  {
+    text: "text3",
+  },
+];
+*/
+const elements = [];
 class List extends Component {
   constructor(props) {
     super(props);
@@ -32,30 +43,14 @@ class List extends Component {
 
   render() {
     const { activeList } = this.state;
-
-    let UIElements = elements.map(({ text }, index) => {
-      const upperText = text.toUpperCase();
-      return (
-        <ListGroupItem
-          onClick={this.handleListItemClick}
-          key={index}
-          className="List-item"
-        >
-          {upperText}
-        </ListGroupItem>
-      );
-    });
-
-    /*
-      UIElements -> [] -> have a length property
-      if (!UIElements.length) -> if(!0) -> if(!false)
-      if (!false) -> if (true)
-    */
+    let UIElements = elements.map(({ text }) => (
+      <ListGroupItem>{text}</ListGroupItem>
+    ));
 
     if (!UIElements.length) {
       UIElements = (
         <h1>
-          No hay <Badge color="danger">elementos</Badge>
+          <Badge color="danger">No hay elementos </Badge>
         </h1>
       );
     }
@@ -63,9 +58,13 @@ class List extends Component {
     return (
       <Container>
         <Row>
-          <Col>{activeList ? <ListGroup>{UIElements}</ListGroup> : null}</Col>
+          <Col>
+            {activeList ? (
+              <ListGroup className="list-group-item">{UIElements}</ListGroup>
+            ) : null}
+          </Col>
           <Button onClick={this.handleShowListClick}>
-            {activeList ? "Hide list" : "Show List"}
+            {activeList ? "Hide list" : "Show list"}
           </Button>
         </Row>
       </Container>
