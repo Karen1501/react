@@ -11,7 +11,6 @@ import {
   Button,
 } from "reactstrap";
 
-/*
 const elements = [
   {
     text: "text1",
@@ -23,8 +22,8 @@ const elements = [
     text: "text3",
   },
 ];
-*/
-const elements = [];
+
+//const elements = [];
 class List extends Component {
   constructor(props) {
     super(props);
@@ -43,8 +42,9 @@ class List extends Component {
 
   render() {
     const { activeList } = this.state;
-    let UIElements = elements.map(({ text }) => (
-      <ListGroupItem>{text}</ListGroupItem>
+
+    let UIElements = elements.map(({ text }, index) => (
+      <ListGroupItem key={index}>{text}</ListGroupItem>
     ));
 
     if (!UIElements.length) {
