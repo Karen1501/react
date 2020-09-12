@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import Post from "../Post/index";
+
 import "./List.css";
 import {
   Container,
@@ -67,6 +69,7 @@ class List extends Component {
             {activeList ? "Hide list" : "Show list"}
           </Button>
         </Row>
+        <Post />
       </Container>
     );
   }
